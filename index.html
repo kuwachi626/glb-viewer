@@ -1,31 +1,30 @@
-<!DOCTYPE html><html><head>
-<title>woolly-kyoryu - glb-viewer</title>
-<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-<script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
-<!--
-  <script type="module" src="./drone-controls-mode2.js"></script>
--->
-<script type="module" src="./mc-controls.js"></script>
+<head>
+  <title>Most Basic Super-Hands Example</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
+  <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
 </head>
 
 <body>
-<a-scene id="scene" background="color: #4080e0" renderer="colorManagement: true">
-  <a-assets timeout="10000">
-    <a-asset-item id="base" src="./hide.glb"></a-asset-item>
-  </a-assets>
-  <a-entity gltf-model="#base" position="0 0 -0.5"></a-entity>
-  <a-entity light="type: ambient; color: #FFF"></a-entity>
-    <!--<a-plane color="#888" height="300" width="300" rotation="-90 0 0"></a-plane>-->
-    <!-- <a-sphere id="sphere" color="#f22"></a-sphere> -->
-  <a-entity id="cameraRig" position="0 0 0">
-    <a-entity id="head" camera position="0 0 0" mc-controls look-controls x-drone-controls-mode2></a-entity>
-    <a-entity oculus-touch-controls="hand:left" teleport-controls="button:trigger; collisionEntities:.collidable; cameraRig:#cameraRig; teleportOrigin:#head;"></a-entity>
-    <a-entity oculus-touch-controls="hand:right" teleport-controls="button:trigger; collisionEntities:.collidable; cameraRig:#cameraRig; teleportOrigin:#head;"></a-entity>
-    <!--
-    <a-entity id="leftHand" hand-tracking-controls="hand: left;"></a-entity>
-    <a-entity id="rightHand" hand-tracking-controls="hand: right;"></a-entity>
-    -->
+  <a-scene id="scene" background="color: #4080e0" renderer="colorManagement: true">
+    <a-assets timeout="10000">
+      <!-- <a-asset-item id="base1" src="./GLTF/kamamesi.glb"></a-asset-item> -->
+      <a-asset-item id="base1" src="./GLTF/hide.glb"></a-asset-item>
+      <a-asset-item id="base2" src="./GLTF/iwamoto.glb"></a-asset-item>
+      <a-asset-item id="base3" src="./GLTF/marutonya.glb"></a-asset-item>
+      <a-asset-item id="base4" src="./GLTF/terunosuke.glb"></a-asset-item>
+      <a-asset-item id="base5" src="./GLTF/zundouya.glb"></a-asset-item>
+    </a-assets>
+    <a-entity hoverable grabbable stretchable draggable droppable gltf-model="#base1" position="0 0 -0.5" class = "glab"></a-entity>
+    <a-entity hoverable grabbable stretchable draggable droppable gltf-model="#base2" position="0.5 0 -0.5" class = "glab"></a-entity>
+    <a-entity hoverable grabbable stretchable draggable droppable gltf-model="#base3" position="1 0 -0.5" class = "glab"></a-entity>
+    <a-entity hoverable grabbable stretchable draggable droppable gltf-model="#base4" position="-0.5 0 -0.5" class = "glab"></a-entity>
+    <a-entity hoverable grabbable stretchable draggable droppable gltf-model="#base5" position="-1 0 -0.5" class = "glab"></a-entity>
+    <a-entity light="type: ambient; color: #FFF"></a-entity>
+    <a-entity>
+      <a-camera></a-camera>
+      <a-entity sphere-collider="objects: .glab" super-hands hand-controls="hand: left"></a-entity>
+      <a-entity sphere-collider="objects: .glab" super-hands hand-controls="hand: right"></a-entity>
     </a-entity>
-</a-scene>
+  </a-scene>
 </body>
-</html>

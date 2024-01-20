@@ -1,13 +1,3 @@
-/*
-module.exports = {
-  AFRAME_INJECTED: 'aframe-injected',
-  DEFAULT_CAMERA_HEIGHT: 1.6,
-  DEFAULT_HANDEDNESS: 'right',
-  keyboardevent: require('./keyboardevent')
-};
-*/
-//module.exports = {
-  // Tiny KeyboardEvent.code polyfill.
 const KEYCODE_TO_CODE = {
     '38': 'ArrowUp',
     '37': 'ArrowLeft',
@@ -20,29 +10,18 @@ const KEYCODE_TO_CODE = {
     '32': 'Space',
     '16': 'ShiftLeft',
   }
-//};
 
 const degToRad = deg => deg / 180 * Math.PI;
-/*
-let KEYCODE_TO_CODE = require('../constants').keyboardevent.KEYCODE_TO_CODE;
-let registerComponent = require('../core/component').registerComponent;
-let THREE = require('../lib/three');
-let utils = require('../utils/');
-*/
 
-//let bind = utils.bind;
-
-function bind (fn, ctx/* , arg1, arg2 */) {
+function bind (fn, ctx) {
   return (function (prependedArgs) {
     return function bound () {
-      // Concat the bound function arguments with those passed to original bind
       let args = prependedArgs.concat(Array.prototype.slice.call(arguments, 0));
       return fn.apply(ctx, args);
     };
   })(Array.prototype.slice.call(arguments, 2));
 };
 
-//let shouldCaptureKeyEvent = utils.shouldCaptureKeyEvent;
 const shouldCaptureKeyEvent = function (event) {
   if (event.metaKey) { return false; }
   return document.activeElement === document.body;
@@ -56,9 +35,6 @@ let KEYS = [
   'Space', 'ShiftLeft',
 ];
 
-/**
- * WASD component to control entities using WASD keys.
- */
 AFRAME.registerComponent("mc-controls", {
   schema: {
     acceleration: { default: 65 },
